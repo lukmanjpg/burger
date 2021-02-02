@@ -1,0 +1,126 @@
+.top{
+	width: 100%;
+	background: black;
+}
+.top .wrapper{
+	padding: 4px 15px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+.top .left{
+	display: flex;
+}
+.top-title{
+	font-size: calc(11px + 2 * ((100vw - 320px) / (1280 - 320)));
+	color: white;
+	font-weight: 400;
+	display: flex;
+	align-items: center;
+}
+.top-phone{
+	margin-right: 20px;
+}
+.top-phone:before{	
+	content: "\f2a0";
+	font-weight: 900;
+	font-family: "Font Awesome 5 Pro";
+	color: white;
+	margin-right: 5px;
+}
+.top-map:before{
+	content: "\f3c5";
+	font-weight: 900;
+	font-family: "Font Awesome 5 Pro";
+	color: white;
+	margin-right: 5px;
+}
+.top .right{
+	display: grid;
+	grid-template-columns: auto auto auto auto;
+	grid-column-gap: 20px;
+}
+.top .right i{
+	color: white;
+	transition: 0.3s ease;
+}
+.top .right i:hover{
+	color: #FFC222;
+}
+/*Шапка сайта*/
+.header {
+	width: 100%;
+	background: white;
+}
+.header .wrapper {
+	padding: 24px 15px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+.header .header-logo {
+	width: calc(100px + 25 * ((100vw - 320px) / (1280 - 320)));
+}
+.header-list {
+	display: flex;
+	align-items: center;
+}
+.header-li {
+	padding: 0 15px;
+}
+.header-link {
+	font-size: calc(14px + 2 * ((100vw - 320px) / (1280 - 320)));
+	color: black;
+	font-weight: 700;
+}
+.order-holder {
+	display: flex;
+	align-items: center;
+}
+.order__img {
+	width: 55px;
+	margin-right: 5px;
+}
+.order-title-holder {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	justify-content: flex-start;
+}
+.order-title {
+	font-size: calc(11px + 2 * ((100vw - 320px) / (1280 - 320)));
+	color: #999;
+	font-weight: 300;
+}
+.order-phone {
+	color: #FFC222;
+	font-size: calc(20px + 4 * ((100vw - 320px) / (1280 - 320)));
+	font-weight: 700;
+}
+.header .icon-holder {
+	display: grid;
+	grid-template-columns: auto auto auto auto;
+	grid-column-gap: 10px;
+}
+.icon {
+	height: 48px;
+	width: 48px;
+	border-radius: 50%;
+	border: 1px solid #e5e5e5;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.icon i{
+	position: relative;
+}
+.like-count {
+	position: absolute;
+	bottom: 100%;
+	left: 100%;
+	display: block;
+	color: #1E1D23;
+	background: #FFC222;
+	padding: 4px 10px;
+	border-radius: 10px;
+}
