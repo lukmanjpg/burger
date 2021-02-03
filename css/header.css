@@ -102,7 +102,7 @@
 	grid-template-columns: auto auto auto auto;
 	grid-column-gap: 10px;
 }
-.icon {
+.top .icon {
 	height: 48px;
 	width: 48px;
 	border-radius: 50%;
@@ -111,7 +111,7 @@
 	justify-content: center;
 	align-items: center;
 }
-.icon i{
+.top .icon i{
 	position: relative;
 }
 .like-count {
