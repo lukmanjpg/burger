@@ -3,6 +3,9 @@ $('.services .right').css({
 	width: $('.services .services-circle').outerWidth(),
 	height: $('.services .services-circle').outerHeight(),
 });
+$('.media-info').css({
+	bottom: '-'+ $('.media-info').outerHeight() +'px',
+});
 let cloudWidthResult = $('.cloud').outerWidth() / 100;
 let resultWidthCloudImg = cloudWidthResult * 10;
 let cloudHeightResult = $('.cloud').outerHeight() / 100;
@@ -79,8 +82,9 @@ function initRatings(ratings){
 
 	}
 }
-
+// Обьект с информацией о покупке
 let cart = {};
+// Обьект с информацией о Избранных продуктов
 let likedProduct = {};
 // Проверка LocalStorage
 function checkCart(){
@@ -89,7 +93,7 @@ function checkCart(){
 		cart = JSON.parse(result);
 	}
 }
-
+//Проверка LocalStorage
 function checkLikeProduct(){
 	let result = localStorage.getItem('likedProduct');
 	if (result != null) {
@@ -109,11 +113,14 @@ function outProduct(arrayProduct){
 	for(let i = 0;i<arrayProduct.length;i++){
 		out += '<div class="product-item">';
 		out += '<div class="product-top">';
+		if(arrayProduct[i].sale === "yes"){
+			out += '<span class="onsale">SALE</span>'
+		}
 		out += '<div class="product-effect"></div>';
 		if(likedProduct[arrayProduct[i].id] != undefined){
-			out += '<i class="fas fa-heart addToLiked c-pointer active" product-id="'+ arrayProduct[i].id +'"><div class="tooltipLike">Уже есть в Избранных</div></i>';
+			out += '<i class="fas fa-heart addToLiked c-pointer active" product-id="'+ arrayProduct[i].id +'"><div class="tooltipLike">Добавлено в<br> избранные</div></i>';
 		}else {
-			out += '<i class="fas fa-heart addToLiked c-pointer" product-id="'+ arrayProduct[i].id +'"><div class="tooltipLike">Уже есть в Избранных</div></i>';
+			out += '<i class="fas fa-heart addToLiked c-pointer" product-id="'+ arrayProduct[i].id +'"><div class="tooltipLike">Добавлено в<br> избранные</div></i>';
 		}
 		out += '<img src="img/'+arrayProduct[i].image+'" alt="" class="product-item-img">';
 		out += '</div>';
@@ -134,9 +141,17 @@ function outProduct(arrayProduct){
 		out += '<span class="popular-product-title">'+ arrayProduct[i].name +'</span>';
 		out += '<p class="popular-product-text">'+arrayProduct[i].description+'</p>';
 		out += '<div class="product-bottom-holder">'
+		out += '<span class="d-flex a-center">'
+		if(arrayProduct[i].old_price != "no"){
+			out += '<span class="old-price">';
+			out += `<span class="old-price-units">${arrayProduct[i].units}</span>`;
+			out += '<span class="old-price-num">'+arrayProduct[i].old_price+'</span>'
+			out += '</span>';
+		}
 		out += '<span class="popular-product-price">';
 		out += '<span class="popular-product-units">'+ arrayProduct[i].units +'</span>';
 		out += '<span class="popular-product-num">'+ arrayProduct[i].price +'</span>';
+		out += '</span>';
 		out += '</span>';
 		out += '<div class="addtoCartButton c-pointer" product-id="'+ arrayProduct[i].id +'">';
 		out += '<i class="fas fa-shopping-basket"></i>';
@@ -158,12 +173,16 @@ function addToLikedCart(){
 	let id = $(this).attr('product-id');
 	let tooltip = $(this).find('.tooltipLike');
 	if (likedProduct[id] != undefined) {
-		errorLiked(tooltip);
+		delete likedProduct[id];
+		$(this).removeClass('active');
 	}else {
+		errorLiked(tooltip);
 		likedProduct[id] = 1;
 		$(this).addClass('active');
 	}
+	outCountLikedProduct();
 	saveLikedToLS();
+	outCountLikedProduct();
 }
 function errorLiked(a){
 	a.addClass('active');
@@ -180,9 +199,13 @@ function addToCart(){
 		cart[id] = 1;
 	}
 	saveCartToLS();
+	outCountCartProduct();
 }
 $('.tab-item').on('click',changeOutProducts);
 function changeOutProducts(){
+	if($(this).hasClass('active')){
+		return false;
+	}
 	$('.tab-item').each(function() {
 		$(this).removeClass('active');  		
 	});
@@ -244,10 +267,26 @@ $('.comments-holder').slick({
 	autoplayspeed:4000,
 	arrows:false,
 	dots:true,
+	responsive: [
+        {
+          breakpoint: 1000,
+          settings: {
+            slidesToShow: 2,
+          }
+        },
+        {
+          breakpoint: 680,
+          settings: {
+            slidesToShow: 1,
+          }
+        }
+      ]
 });
-filterBlogPosts();
-function filterBlogPosts(){
-	outBlogPost(blogPosts,$('.blog-holder'));
+filterBlogPosts(blogPosts,$('.blog-holder'));
+function filterBlogPosts(blogArray,Blogscontainer){
+	let sortedProduct = blogPosts.slice(-3);
+	let reverseArray = sortedProduct.reverse();
+	outBlogPost(reverseArray,Blogscontainer);
 }
 function outBlogPost(blogPostArray,blogPostsHolder){
 	let out = '';
@@ -266,17 +305,109 @@ function outBlogPost(blogPostArray,blogPostsHolder){
 		out += '<span class="blog-item-title">'+ blogPostArray[i].title +'</span>';		
 		out += '<p class="blog-text">'+ blogPostArray[i].text +'</p>';
 		out += '</div>';
-		out += '<a href="#" class="blog-button">Read More</a>';
+		out += '<a href="#" class="blog-button" blog-id="'+ blogPostArray[i].id +'">Read More</a>';
 		out += '</div>';
 		out += '</div>';
 	}
 	blogPostsHolder.html(out);
+	textOverflow($('.blog-user-name'),6);
 	textOverflow($('.blog-text'),132);
+	slickComments($('.blog-holder'));
 }
-var text = 'Hello people of 1974. I come from the future. In 2014 we have laser guns, hover boards and live on the moon!';
+outCountCartProduct();
+function outCountCartProduct(){
+	let zero = 0;
+	for(let i in cart){
+		zero += +cart[i];
+	}
+	$('.cart-count').html(zero);
+}
+outCountLikedProduct();
+function outCountLikedProduct(){
+	let zero = 0;
+	for(let i in likedProduct){
+		zero += +likedProduct[i];
+	}
+	$('.like-count-product').html(zero);
+}
 
-// Найдет годы. \d+ найдет один и более знаков
+$(window).on('scroll',fixedHeader);
+function fixedHeader(){
+	let result = $('.top').outerHeight();
+	console.log(result)
+	if($(window).scrollTop() >= result){
+		$('.top').css({
+			marginBottom: $('.header').outerHeight(),
+		});
+		$('.header').addClass('fixed-header');
+	}
+	else{
+		$('.top').css({
+			marginBottom: '0',
+		});
+		$('.header').removeClass('fixed-header');
+	}
+};
 
-var yearRegex = /\d+/g;
+$('.burger-holder').on('click',function(){
+	$(this).toggleClass('active');
+	$('.media-menu').addClass('active');
+});
+$('.closeMediaMenu').on('click',function(){
+	$('.media-menu').removeClass('active');
+	$('.burger-holder').removeClass('active');
+})
 
-console.log('Years: ', text.match( yearRegex ) );
+
+let arrowMedia = document.querySelectorAll('.arrow-holder');
+let mediaDropdown = document.querySelectorAll('.media-dropdown');
+let dropdownWraps = document.querySelectorAll('.dropdown-wrap');
+for(let i = 0;i<arrowMedia.length;i++){
+	arrowMedia[i].addEventListener('click',function(){
+		this.classList.toggle('active');
+		if(arrowMedia[i].classList.contains('active')){
+			dropdownWraps[i].style.height = ''+mediaDropdown[i].offsetHeight+'px';
+		}else {
+			dropdownWraps[i].style.height = '';
+		}
+	})
+}
+
+function slickComments(sliderHolder){
+	sliderHolder.slick({
+		slidesToShow: 3,
+		slidesToScroll: 1,
+		infinite:true,
+		autoplay:true,
+		autoplayspeed:4000,
+		arrows:false,
+		dots:false,
+		responsive: [
+	        {
+	          breakpoint: 1000,
+	          settings: {
+	            slidesToShow: 2,
+	          }
+	        },
+	        {
+	          breakpoint: 680,
+	          settings: {
+	            slidesToShow: 1,
+	          }
+	        }
+	      ]
+	});	
+}
+
+$('.toggleNavInfo').on('click',function(){
+	$(this).toggleClass('active');
+	if($(this).hasClass('active')){
+		$('.media-info').css({
+			bottom: '0px',
+		});
+	}else {
+		$('.media-info').css({
+			bottom: '-'+ $('.media-info').outerHeight() +'px',
+		});
+	}
+});

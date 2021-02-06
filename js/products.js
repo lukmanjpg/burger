@@ -8,6 +8,8 @@ let shopProduct = [
       "image":"product-1-1.png",
       "category_name":"bread",
       "category":1,
+      "sale":"yes",
+      "old_price":"no",
       "rating":3.5
    },
    {
@@ -19,6 +21,8 @@ let shopProduct = [
       "image":"product-1-2.png",
       "category_name":"bread",
       "category":1,
+      "sale":"no",
+      "old_price":"no",
       "rating":2.5
    },
    {
@@ -30,6 +34,8 @@ let shopProduct = [
       "image":"product-1-3.png",
       "category_name":"bread",
       "category":1,
+      "sale":"no",
+      "old_price":"no",
       "rating":5
    },
    {
@@ -41,6 +47,8 @@ let shopProduct = [
       "image":"product-1-4.png",
       "category_name":"bread",
       "category":1,
+      "sale":"yes",
+      "old_price":"no",
       "rating":2
    },
    {
@@ -52,6 +60,8 @@ let shopProduct = [
       "image":"product-1-5.png",
       "category_name":"bread",
       "category":1,
+      "sale":"yes",
+      "old_price":"no",
       "rating":1
    },
    {
@@ -63,6 +73,8 @@ let shopProduct = [
       "image":"product-1-6.png",
       "category_name":"bread",
       "category":1,
+      "sale":"yes",
+      "old_price":120,
       "rating":4
    },
    {
@@ -74,6 +86,8 @@ let shopProduct = [
       "image":"product-1-7.png",
       "category_name":"bread",
       "category":1,
+      "sale":"yes",
+      "old_price":"no",
       "rating":4.6
    },
    {
@@ -85,6 +99,8 @@ let shopProduct = [
       "image":"product-1-5.png",
       "category_name":"bread",
       "category":1,
+      "sale":"yes",
+      "old_price":"no",
       "rating":2.7
    },
    {
@@ -96,6 +112,8 @@ let shopProduct = [
       "image":"product-2-1.png",
       "category_name":"bread",
       "category":2,
+      "sale":"yes",
+      "old_price":"no",
       "rating":4.3
    },
    {
@@ -107,6 +125,8 @@ let shopProduct = [
       "image":"product-2-2.png",
       "category_name":"bread",
       "category":2,
+      "sale":"yes",
+      "old_price":"no",
       "rating":4.1
    },
    {
@@ -118,6 +138,8 @@ let shopProduct = [
       "image":"product-2-3.png",
       "category_name":"bread",
       "category":2,
+      "sale":"yes",
+      "old_price":"no",
       "rating":1.3
    },
    {
@@ -129,6 +151,8 @@ let shopProduct = [
       "image":"product-2-4.png",
       "category_name":"bread",
       "category":2,
+      "sale":"yes",
+      "old_price":"no",
       "rating":0.5
    },
    {
@@ -140,6 +164,8 @@ let shopProduct = [
       "image":"product-2-5.png",
       "category_name":"bread",
       "category":2,
+      "sale":"yes",
+      "old_price":"no",
       "rating":1.9
    },
    {
@@ -151,6 +177,8 @@ let shopProduct = [
       "image":"product-2-6.png",
       "category_name":"bread",
       "category":2,
+      "sale":"yes",
+      "old_price":"no",
       "rating":4.8
    },
    {
@@ -162,6 +190,8 @@ let shopProduct = [
       "image":"product-2-7.png",
       "category_name":"bread",
       "category":2,
+      "sale":"yes",
+      "old_price":"no",
       "rating":4.9
    },
    {
@@ -173,6 +203,8 @@ let shopProduct = [
       "image":"product-2-8.png",
       "category_name":"bread",
       "category":2,
+      "sale":"yes",
+      "old_price":"no",
       "rating":2.6
    },
    {
@@ -184,6 +216,8 @@ let shopProduct = [
       "image":"product-3-1.png",
       "category_name":"bread",
       "category":3,
+      "sale":"yes",
+      "old_price":"no",
       "rating":3.4
    },
    {
@@ -195,6 +229,8 @@ let shopProduct = [
       "image":"product-3-2.png",
       "category_name":"bread",
       "category":3,
+      "sale":"yes",
+      "old_price":"no",
       "rating":1.3
    },
    {
@@ -206,6 +242,8 @@ let shopProduct = [
       "image":"product-3-3.png",
       "category_name":"bread",
       "category":3,
+      "sale":"yes",
+      "old_price":"no",
       "rating":2.6
    },
    {
@@ -217,6 +255,8 @@ let shopProduct = [
       "image":"product-3-4.png",
       "category_name":"bread",
       "category":3,
+      "sale":"yes",
+      "old_price":"no",
       "rating":3.9
    },
    {
@@ -228,6 +268,8 @@ let shopProduct = [
       "image":"product-3-5.png",
       "category_name":"bread",
       "category":3,
+      "sale":"yes",
+      "old_price":"no",
       "rating":2.7
    },
    {
@@ -239,6 +281,8 @@ let shopProduct = [
       "image":"product-3-6.png",
       "category_name":"bread",
       "category":3,
+      "sale":"yes",
+      "old_price":"no",
       "rating":1.4
    },
    // Четвертая категория
@@ -251,6 +295,8 @@ let shopProduct = [
       "image":"product-4-1.png",
       "category_name":"bread",
       "category":4,
+      "sale":"yes",
+      "old_price":"no",
       "rating":3.1
    },
    {
@@ -262,6 +308,8 @@ let shopProduct = [
       "image":"product-4-2.png",
       "category_name":"bread",
       "category":4,
+      "sale":"yes",
+      "old_price":"no",
       "rating":5
    },
    {
@@ -273,6 +321,8 @@ let shopProduct = [
       "image":"product-4-3.png",
       "category_name":"bread",
       "category":4,
+      "sale":"yes",
+      "old_price":"no",
       "rating":5
    },
    {
@@ -284,6 +334,8 @@ let shopProduct = [
       "image":"product-4-4.png",
       "category_name":"bread",
       "category":4,
+      "sale":"yes",
+      "old_price":"no",
       "rating":4.9
    },
    {
@@ -295,6 +347,8 @@ let shopProduct = [
       "image":"product-4-5.png",
       "category_name":"bread",
       "category":4,
+      "sale":"yes",
+      "old_price":"no",
       "rating":1.3
    },
    {
@@ -306,6 +360,8 @@ let shopProduct = [
       "image":"product-4-6.png",
       "category_name":"bread",
       "category":4,
+      "sale":"yes",
+      "old_price":"no",
       "rating":3.4
    },
    {
@@ -317,6 +373,8 @@ let shopProduct = [
       "image":"product-4-7.png",
       "category_name":"bread",
       "category":4,
+      "sale":"yes",
+      "old_price":"no",
       "rating":4.3
    },
    {
@@ -328,6 +386,8 @@ let shopProduct = [
       "image":"product-4-8.png",
       "category_name":"bread",
       "category":4,
+      "sale":"yes",
+      "old_price":"no",
       "rating":2.3
    },
    // Пятая категория
@@ -340,6 +400,8 @@ let shopProduct = [
       "image":"product-5-1.png",
       "category_name":"bread",
       "category":5,
+      "sale":"yes",
+      "old_price":"no",
       "rating":1.6
    },
    {
@@ -351,6 +413,8 @@ let shopProduct = [
       "image":"product-5-2.png",
       "category_name":"bread",
       "category":5,
+      "sale":"yes",
+      "old_price":"no",
       "rating":1.9
    },
    {
@@ -362,6 +426,8 @@ let shopProduct = [
       "image":"product-5-3.png",
       "category_name":"bread",
       "category":5,
+      "sale":"yes",
+      "old_price":"no",
       "rating":1.3
    },
    {
@@ -373,6 +439,8 @@ let shopProduct = [
       "image":"product-5-4.png",
       "category_name":"bread",
       "category":5,
+      "sale":"no",
+      "old_price":"no",
       "rating":4.2
    },
    {
@@ -384,6 +452,8 @@ let shopProduct = [
       "image":"product-5-5.png",
       "category_name":"bread",
       "category":5,
+      "sale":"no",
+      "old_price":"no",
       "rating":2.6
    },
    {
@@ -395,6 +465,8 @@ let shopProduct = [
       "image":"product-5-6.png",
       "category_name":"bread",
       "category":5,
+      "sale":"no",
+      "old_price":"no",
       "rating":2.5
    }
 ]
