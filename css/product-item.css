@@ -1,0 +1,218 @@
+.popular-product__holder {
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr 1fr;
+	grid-column-gap: 4%;
+	padding: 0 15px;
+	margin-top: 30px;
+	grid-row-gap: 25px;
+}
+.product-item {
+	width: 100%;
+	padding: 10px;
+	border: 1px solid #e5e5e5;
+	background: white;
+	border-radius: 30px;
+}
+.product-top {
+	position: relative;
+	width: 100%;
+	z-index: 0;
+}
+.onsale{
+	position: absolute;
+	left: 10px;
+	top: 10px;
+	border-radius: 10px;
+	display: flex;
+	padding: 5px;
+	background: black;
+	color: white;
+	font-weight: 600;
+	font-size: calc(10px + 2 * ((100vw - 320px) / (1280 - 320)));
+}
+.product-effect {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	height: 50%;
+	background: #ffc222;
+	opacity: 0.1;
+	border-radius: 15px;
+	transition: 0.4s ease;
+	z-index: -1;
+}
+.product-item-img {
+	width: 100%;
+	height: 100%;
+	object-fit: contain;
+	transition: 0.3s ease;
+}
+.addToLiked{
+	position: absolute;
+	right: 10px;
+	top: 10px;
+	font-size: calc(16px + 2 * ((100vw - 320px) / (1280 - 320)));
+	color: #ddd;
+	z-index: 4;
+	transition: 0.3s ease;
+}
+.addToLiked.active{
+	color: red;
+}
+.tooltipLike{
+	position: absolute;
+	left: 50%;
+	transform: translateX(-50%);
+	bottom: 120%;
+	padding: 7px;
+	background: white;
+	font-family: 'Montserrat', sans-serif;
+	border-radius: 4px;
+	font-weight: 400;
+	color: black;
+	font-size: calc(12px + 2 * ((100vw - 320px) / (1280 - 320)));
+	visibility: hidden;
+	opacity: 0;
+	transition: 0.6s ease;
+	box-sizing: content-box;
+	text-align: center;
+	white-space: nowrap;
+}
+.tooltipLike.active{
+	visibility: visible;
+	opacity: 1;
+}
+.product-info-holder {
+	padding: 10px;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	justify-content: flex-start;
+}
+.popular-product-title {
+	color: #1E1D23;
+	font-size: calc(14px + 2 * ((100vw - 320px) / (1280 - 320)));
+	margin: 10px 0;
+	font-weight: 700;
+	transition: 0.3s ease;
+	cursor: pointer;
+}
+.popular-product-title:hover{
+	color: #ffc222;
+}
+.popular-product-text {
+	margin: 0;
+	font-weight: 400;
+	color: gray;
+	line-height: 1.5;
+	font-size: calc(12px + 2 * ((100vw - 320px) / (1280 - 320)));
+}
+.product-bottom-holder {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	width: 100%;
+	margin-top: 10px;
+}
+.old-price{
+	color: #999999;
+	font-size: calc(12px + 2 * ((100vw - 320px) / (1280 - 320)));
+	font-weight: 700;
+	margin-right: 4px;
+	position: relative;
+}
+.old-price:before{
+	content: "";
+	display: flex;
+	position: absolute;
+	left: 0;
+	top: 50%;
+	transform: translateY(-50%);
+	width: 100%;
+	height: 2px;
+	background: #999999;
+}
+.popular-product-price {
+	display: flex;
+	color: #FFC222;
+	font-size: calc(18px + 2 * ((100vw - 320px) / (1280 - 320)));
+	font-weight: 700;
+}
+.addtoCartButton {
+	width: 40px;
+	height: 40px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border-radius: 16px;
+	background: #FFC222;
+	transition: 0.3s ease;
+}
+.addtoCartButton:hover{
+	background: black;
+	color: white;
+}
+.addtoCartButton:hover i{
+	color: white;
+}
+.addToCartButton i{
+	color: black;
+	transition: 0.3s ease;
+}
+.seeAllProducts {
+	margin-top: 35px;
+	color: black;
+	font-size: calc(12px + 2 * ((100vw - 320px) / (1280 - 320)));
+	font-weight: 700;
+	border-radius: 8px;
+	background: #ffc222;
+	padding: 20px 45px;
+	font-family: 'Montserrat', sans-serif;
+	border: none;
+	outline: none;
+}
+/*Анимация при наведении на продукты*/
+.product-item:hover .product-effect{
+	height: 100%;
+	opacity: 1;
+}
+.product-item:hover .product-item-img{
+	transform: scale(1.2);
+}
+
+.preloader{
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	left: 0;
+	top: 0;
+	background: white;
+	visibility: hidden;
+	opacity: 0;
+	transition: 0.3s ease;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	z-index: 3000;
+}
+.preloader.active{
+	visibility: visible;
+	opacity: 1;
+}
+
+@media screen and (max-width: 1100px){
+	.popular-product__holder{
+		grid-template-columns: 1fr 1fr 1fr;
+	}
+}
+@media screen and (max-width: 1000px){
+	.popular-product__holder{
+		grid-template-columns: 1fr 1fr;
+	}
+}
+@media screen and (max-width: 800px){
+	.popular-product__holder{
+		grid-template-columns: 1fr;
+	}
+}

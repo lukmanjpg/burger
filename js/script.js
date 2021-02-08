@@ -82,6 +82,8 @@ function initRatings(ratings){
 
 	}
 }
+textOverflow($('.popular-product-text'),60);
+textOverflow($('.comments-text'),104);
 // Обьект с информацией о покупке
 let cart = {};
 // Обьект с информацией о Избранных продуктов
@@ -138,13 +140,13 @@ function outProduct(arrayProduct){
 		out += '</div>';
 		out += '<div class="rating__value">'+arrayProduct[i].rating+'</div>';
 		out += '</div>';
-		out += '<span class="popular-product-title">'+ arrayProduct[i].name +'</span>';
+		out += '<span link="product-preview.html" class="popular-product-title watchAboutProduct" product-id="'+ arrayProduct[i].id +'">'+ arrayProduct[i].name +'</span>';
 		out += '<p class="popular-product-text">'+arrayProduct[i].description+'</p>';
 		out += '<div class="product-bottom-holder">'
 		out += '<span class="d-flex a-center">'
 		if(arrayProduct[i].old_price != "no"){
 			out += '<span class="old-price">';
-			out += `<span class="old-price-units">${arrayProduct[i].units}</span>`;
+			out += '<span class="old-price-units">'+ arrayProduct[i].units +'</span>';
 			out += '<span class="old-price-num">'+arrayProduct[i].old_price+'</span>'
 			out += '</span>';
 		}
@@ -168,6 +170,7 @@ function outProduct(arrayProduct){
 	$('.addtoCartButton').on('click',addToCart);
 	textOverflow($('.popular-product-text'),60);
 	initAllRatings();
+	$('.watchAboutProduct').on('click',goToPreview);
 }
 function addToLikedCart(){
 	let id = $(this).attr('product-id');
@@ -321,6 +324,7 @@ function outCountCartProduct(){
 		zero += +cart[i];
 	}
 	$('.cart-count').html(zero);
+	$('.cart-total-count').html(zero);
 }
 outCountLikedProduct();
 function outCountLikedProduct(){
@@ -329,6 +333,7 @@ function outCountLikedProduct(){
 		zero += +likedProduct[i];
 	}
 	$('.like-count-product').html(zero);
+	$('.wishlist-count').html(zero);
 }
 
 $(window).on('scroll',fixedHeader);
@@ -397,7 +402,7 @@ function slickComments(sliderHolder){
 	        }
 	      ]
 	});	
-}
+};
 
 $('.toggleNavInfo').on('click',function(){
 	$(this).toggleClass('active');
@@ -411,3 +416,16 @@ $('.toggleNavInfo').on('click',function(){
 		});
 	}
 });
+
+let singleItemId = {};
+function goToPreview(){
+	let url = $(this).attr('link');
+	console.log(url);
+	let id = $(this).attr('product-id');
+    singleItemId['item'] = id;
+    localStorage.setItem('singleItem', JSON.stringify(singleItemId));
+    $('.preloader').addClass('active');
+    setTimeout(function(){
+    	document.location.href = url;
+    },2000);
+};

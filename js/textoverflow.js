@@ -56,8 +56,6 @@
     });
 };
    //инициализация
-textOverflow($('.popular-product-text'),60);
-textOverflow($('.comments-text'),104);
 function textOverflow(productDescription,textLength){
     productDescription.liTextLength({
         length: textLength,                                    //Видимое кол-во символов
